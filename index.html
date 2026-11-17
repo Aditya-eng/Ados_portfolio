@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aditya Garg | FPGA &amp; RTL Design Engineer</title>
+  <meta name="description" content="Aditya Garg — final-year Instrumentation & Control Engineering student at NSUT, New Delhi. Digital design, RTL, FPGA implementation, verification and board bring-up." />
+  <meta property="og:title" content="Aditya Garg | FPGA & RTL Design Engineer" />
+  <meta property="og:description" content="People made rocks think by arranging them in the right order. I like re-arranging them myself." />
+  <meta name="theme-color" content="#0b0d0c" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // Apply saved theme before paint to avoid a flash
+    try {
+      var t = localStorage.getItem('ados-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+      else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="top">
+    <div class="nav__inner container">
+      <a class="brand" href="#top" aria-label="Aditya Garg, home">
+        <span class="brand__chip" aria-hidden="true"></span>
+        <span>ados<span class="accent">.</span></span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Menu</span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Pro-Folio</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+              <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+              <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <canvas class="hero__traces" aria-hidden="true"></canvas>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow mono">// final-year B.Tech · ICE · NSUT, New Delhi</p>
+          <h1>Hey! I'm <span class="accent">Aditya</span>.</h1>
+          <p class="lede">
+            I design digital hardware across the whole stack, from PCB bring-up and analog power paths
+            up through RTL, FPGA synthesis and bare-metal C drivers. I verify all of it exhaustively.
+          </p>
+          <p class="roles mono">
+            <span>RTL Designer</span><span>FPGA Tinkerer</span><span>Board Bring-up</span><span>Hackathon Regular</span>
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#projects">See my work</a>
+            <a class="btn btn--ghost" href="https://github.com/Aditya-eng" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+
+        <figure class="term" aria-label="Simulated testbench output">
+          <div class="term__bar"><i></i><i></i><i></i><span class="mono">tb_mrpm.v</span></div>
+          <pre class="term__body mono" data-typed><code>$ iverilog -o sim tb_mrpm.v mrpm_radix4.v
+$ vvp sim
+[TB] signed radix-4 MRPM, Booth-recoded
+[TB] sweeping all operand pairs ...
+[TB] checked 65536 / 65536 pairs
+[TB] mismatches: 0
+[SYN] LUT4 345 -> 222   (-35.7%)
+[STA] Fmax 42.96 -> 66.47 MHz
+PASS</code></pre>
+        </figure>
+      </div>
+
+      <div class="container">
+        <div class="featured">
+          <span class="featured__label mono">Recognised by</span>
+          <ul class="featured__list">
+            <li><strong>RCAAI</strong><span>Paper accepted, 5th edition</span></li>
+            <li><strong>Smart India Hackathon</strong><span>College Finalist, 2024</span></li>
+            <li><strong>AtomQuest 2025</strong><span>Semi-Finalist of 18,000+</span></li>
+            <li><strong>HackWithMAIT 5.0</strong><span>3rd Place</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats" aria-label="Highlights in numbers">
+      <div class="container stats__grid">
+        <div class="stat"><span class="stat__num" data-count="65536">65,536</span><span class="stat__lbl">operand pairs checked exhaustively</span></div>
+        <div class="stat"><span class="stat__num" data-count="360000">360,000</span><span class="stat__lbl">randomised FIFO transfers, zero loss</span></div>
+        <div class="stat"><span class="stat__num" data-count="7">7</span><span class="stat__lbl">custom boards brought up from schematic</span></div>
+        <div class="stat"><span class="stat__num" data-count="35" data-suffix="+">35+</span><span class="stat__lbl">students taught embedded C</span></div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__text">
+          <p class="eyebrow mono">01 / about</p>
+          <h2>A bit about me…</h2>
+          <blockquote class="pull">
+            “I read my way down from computers to CPUs to transistors, and realised that people had made
+            <em>rocks think</em> by arranging them in the right order. I still find that remarkable.”
+          </blockquote>
+          <p>
+            It started in ninth grade, in a robotics programme with my first Python classes. Getting a machine to follow
+            code I had written was the most fun I'd had at school. That made me curious about what sits
+            <em>underneath</em> the code. <strong>Nand2Tetris</strong> gave the curiosity a structure, taking me from
+            gates up to a computer that runs programs. Along the way I wrote my own assembler for it in C++.
+          </p>
+          <p>
+            The layer I enjoy most turned out to be <strong>custom hardware on FPGAs</strong>. A CPU is a fixed arrangement
+            of rocks. An FPGA lets me re-arrange them myself: define the hardware, load it, measure it, change it, and reload it.
+            It's the closest thing to designing a chip without a fab.
+          </p>
+          <p>
+            At NSUT I went from Arduino, ESP32 and Raspberry Pi in the CEDT lab, to bringing up custom boards at the
+            Texas Instruments Innovation Lab, to RTL, processor design and arithmetic architecture. I'm graduating in
+            <strong>May 2027</strong>, and I want to become an <strong>FPGA / RTL design engineer</strong> by way of
+            research-oriented graduate study in computer architecture.
+          </p>
+          <p class="motto mono">&gt; I don't trust a board until I've measured it working.</p>
+        </div>
+
+        <!-- The "thinking rocks" stack -->
+        <div class="stack" aria-label="The layers I have worked across">
+          <p class="stack__title mono">the stack, top to bottom</p>
+          <ol class="stack__list">
+            <li tabindex="0"><span class="stack__k">Software</span><span class="stack__v">Python, C, C++: what the machine is told to do</span></li>
+            <li tabindex="0"><span class="stack__k">Assembly</span><span class="stack__v">Nand2Tetris assembler · 8051 · ARM</span></li>
+            <li tabindex="0"><span class="stack__k">Architecture</span><span class="stack__v">RV32I core · FemtoRV SoC · custom processor</span></li>
+            <li tabindex="0"><span class="stack__k">Digital logic</span><span class="stack__v">Booth multipliers · async FIFO · FIR datapaths</span></li>
+            <li tabindex="0"><span class="stack__k">Circuits</span><span class="stack__v">BJT/MOSFET stages · laser-diode driver</span></li>
+            <li tabindex="0"><span class="stack__k">Physics of the board</span><span class="stack__v">Biasing, loading, noise, rails under pulsed load</span></li>
+          </ol>
+          <p class="stack__foot mono">silicon = purified sand. nothing magic was added, only arrangement.</p>
+        </div>
+      </div>
+
+      <!-- Toolbox -->
+      <div class="container">
+        <h3 class="sub">Toolbox</h3>
+        <div class="tools">
+          <div class="tools__group"><h4>HDL &amp; languages</h4><ul><li>Verilog</li><li>C (embedded)</li><li>C++</li><li>Python</li><li>8051 / ARM asm</li><li>JavaScript</li></ul></div>
+          <div class="tools__group"><h4>Simulation &amp; FPGA</h4><ul><li>Icarus Verilog</li><li>GTKWave</li><li>Xilinx Vivado</li><li>Gowin</li><li>Virtex-7 VC709</li></ul></div>
+          <div class="tools__group"><h4>Boards &amp; analog</h4><ul><li>KiCad</li><li>LTspice</li><li>Multisim</li><li>MATLAB / Simulink</li><li>SMT &amp; THT soldering</li></ul></div>
+          <div class="tools__group"><h4>Lab bench</h4><ul><li>Oscilloscope</li><li>Logic analyser</li><li>Function generator</li><li>SPI / I²C / UART debug</li></ul></div>
+          <div class="tools__group"><h4>Platforms</h4><ul><li>Raspberry Pi</li><li>ESP32</li><li>Arduino</li><li>TI boards</li><li>Linux · Git</li></ul></div>
+          <div class="tools__group"><h4>Python side</h4><ul><li>FastAPI</li><li>Django</li><li>Flask</li><li>OpenCV</li><li>NumPy · LightGBM</li><li>MQTT · AWS IoT</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section class="section section--alt" id="research">
+      <div class="container">
+        <p class="eyebrow mono">02 / research</p>
+        <h2>Research</h2>
+
+        <article class="paper">
+          <div class="paper__meta">
+            <span class="tag tag--ok">Accepted</span>
+            <span class="mono">RCAAI · 5th International Conference on Robotics, Control, Automation and Artificial Intelligence</span>
+          </div>
+          <h3>Signed Radix-4 Modified Russian Peasant Multiplier for Area-Efficient FIR Filters</h3>
+          <p>
+            My B.Tech project, supervised by Dr. Jyoti Yadav, in a four-member team where I led the design. We extended a
+            2025 Modified Russian Peasant Multiplier into a <strong>signed, radix-4, Booth-recoded</strong> form. That
+            replaces 8 sequential shift-add iterations with 4 parallel partial products. Using coefficient symmetry, we then
+            folded an 8-tap linear-phase FIR onto 4 multipliers. I implemented it on a Xilinx Virtex-7 VC709 for signal denoising.
+          </p>
+          <ul class="paper__results">
+            <li><span class="big">−35.7%</span><span>LUT4 (345 → 222), bit-identical output</span></li>
+            <li><span class="big">+55%</span><span>Fmax with 4-stage pipeline (42.96 → 66.47 MHz)</span></li>
+            <li><span class="big">0</span><span>mismatches across all 65,536 signed operand pairs</span></li>
+          </ul>
+          <a class="link" href="https://github.com/Aditya-eng/btp_MRPM" target="_blank" rel="noopener">btp_MRPM on GitHub ↗</a>
+        </article>
+
+        <h3 class="sub">Questions I keep coming back to</h3>
+        <div class="questions">
+          <div class="q"><span class="q__n mono">Q1</span><h4>Arithmetic vs. the system</h4><p>When does a cleverer multiplier still help once registers, data movement, control overhead and power are counted?</p></div>
+          <div class="q"><span class="q__n mono">Q2</span><h4>FPGA accelerators for quantised NNs</h4><p>Start with a conventional MAC datapath, compare alternative arithmetic at the same precision, then measure against a software reference.</p></div>
+          <div class="q"><span class="q__n mono">Q3</span><h4>Sparsity-aware compute</h4><p>Does skipping zeros save enough to pay for the extra control and buffering?</p></div>
+          <div class="q"><span class="q__n mono">Q4</span><h4>Near-sensor processing</h4><p>How much logic can sit beside a sensor before routing and logic costs outweigh the benefit?</p></div>
+          <div class="q"><span class="q__n mono">Q5</span><h4>HW/SW co-design</h4><p>Accelerator integration: transfer and control overhead measured honestly against the software baseline.</p></div>
+          <div class="q"><span class="q__n mono">Q6</span><h4>Beyond FPGA metrics</h4><p>Power and area in an ASIC flow, and energy at the system level, not just LUT counts.</p></div>
+        </div>
+        <p class="note">
+          <strong>On verification:</strong> I keep functional evidence separate from implementation guarantees. For example,
+          my FIFO simulations show correct ordering, but they don't prove physical immunity to metastability.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="eyebrow mono">03 / pro-folio</p>
+        <h2>Recent projects</h2>
+
+        <div class="filters" role="toolbar" aria-label="Filter projects">
+          <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="rtl" aria-pressed="false">RTL &amp; FPGA</button>
+          <button class="chip" data-filter="embedded" aria-pressed="false">Embedded &amp; Analog</button>
+          <button class="chip" data-filter="python" aria-pressed="false">Python &amp; Hackathons</button>
+        </div>
+
+        <div class="cards">
+          <article class="card card--feature" data-tags="rtl">
+            <div class="card__head"><span class="card__kind mono">B.Tech project · published</span><span class="card__glyph mono" aria-hidden="true">×4</span></div>
+            <h3>Signed Radix-4 MRPM FIR Filter</h3>
+            <p>Booth-recoded multiplier with an 8-tap symmetric FIR folded onto 4 multipliers. 35.7% fewer LUT4s and 55% higher Fmax, verified exhaustively.</p>
+            <ul class="stack-tags"><li>Verilog</li><li>Gowin</li><li>Virtex-7 VC709</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/btp_MRPM" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="rtl">
+            <div class="card__head"><span class="card__kind mono">Clock domain crossing</span><span class="card__glyph mono" aria-hidden="true">⇄</span></div>
+            <h3>Asynchronous FIFO, Gray-code pointers</h3>
+            <p>Parameterised dual-clock FIFO with two-flop synchronisers and conservative full/empty flags across clock ratios from 10:1 to 1:10. Tested with 360,000 randomised transfers across 18 configurations against a reference-model scoreboard.</p>
+            <ul class="stack-tags"><li>Verilog</li><li>iVerilog</li><li>GTKWave</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/async-fifo-cdc" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="rtl">
+            <div class="card__head"><span class="card__kind mono">Processor</span><span class="card__glyph mono" aria-hidden="true">RV</span></div>
+            <h3>32-bit Single-Cycle RISC-V Core</h3>
+            <p>RV32I ALU, control unit, register file and datapath. Over 40 base instructions verified with my own testbenches, with control decode and timing checked in GTKWave.</p>
+            <ul class="stack-tags"><li>Verilog</li><li>RV32I</li></ul>
+          </article>
+
+          <article class="card" data-tags="rtl embedded">
+            <div class="card__head"><span class="card__kind mono">Hardware / software boundary</span><span class="card__glyph mono" aria-hidden="true">MMIO</span></div>
+            <h3>FemtoRV SoC Peripherals &amp; Drivers</h3>
+            <p>Integrated UART and timer peripherals through fixed memory-mapped registers, then wrote bare-metal C drivers, first polled and then interrupt-driven.</p>
+            <ul class="stack-tags"><li>Verilog</li><li>C</li><li>FemtoRV Quark</li></ul>
+          </article>
+
+          <article class="card" data-tags="embedded">
+            <div class="card__head"><span class="card__kind mono">Full product · TI-CEPD lab</span><span class="card__glyph mono" aria-hidden="true">⌁</span></div>
+            <h3>Battery-Powered Laser Tag Guns</h3>
+            <p>Handheld laser guns that fire, register hits and give feedback through an OLED and audio. A TP4056 → BL8530 power path holds the rail under pulsed load, and a BC547 driver keeps the beam consistent from full charge to empty.</p>
+            <ul class="stack-tags"><li>TP4056</li><li>BL8530</li><li>Arduino Nano</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/LASER_GUN" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="embedded">
+            <div class="card__head"><span class="card__kind mono">Runner-up · Eco-Fest</span><span class="card__glyph mono" aria-hidden="true">))</span></div>
+            <h3>Ultrasonic Distance Measurement</h3>
+            <p>Time-of-flight ranging covering transmit drive, echo capture and distance conversion.</p>
+            <ul class="stack-tags"><li>Ultrasonic</li><li>Embedded C</li></ul>
+          </article>
+
+          <article class="card" data-tags="embedded python">
+            <div class="card__head"><span class="card__kind mono">SIH 2024 · College Finalist</span><span class="card__glyph mono" aria-hidden="true">π</span></div>
+            <h3>Raspberry Pi Intrusion Detector</h3>
+            <p>A background thread polls a GPIO sensor input on my Raspberry Pi. When it triggers, the Pi publishes an alert to AWS IoT Core over MQTT with TLS.</p>
+            <ul class="stack-tags"><li>Python</li><li>RPi.GPIO</li><li>MQTT</li><li>AWS IoT</li></ul>
+          </article>
+
+          <article class="card" data-tags="python">
+            <div class="card__head"><span class="card__kind mono">Jammu Smart City Hackathon 2026</span><span class="card__glyph mono" aria-hidden="true">P</span></div>
+            <h3>ParkPulse</h3>
+            <p>Uses existing CCTV to count free parking slots, flag illegal parking and forecast occupancy, with a WhatsApp bot and a map dashboard. Designed to run on Pi-class edge nodes.</p>
+            <ul class="stack-tags"><li>FastAPI</li><li>OpenCV</li><li>Docker</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/ParkPulse" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="python">
+            <div class="card__head"><span class="card__kind mono">Hackathon · safety</span><span class="card__glyph mono" aria-hidden="true">SOS</span></div>
+            <h3>ROADSoS</h3>
+            <p>Detects crashes from accelerometer data, triages severity, gives first-aid guidance, finds the nearest hospital and police station, and generates an FIR report automatically.</p>
+            <ul class="stack-tags"><li>FastAPI</li><li>WebSockets</li><li>NumPy</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/Dorara_RoadSOS" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="python">
+            <div class="card__head"><span class="card__kind mono">SIH 2026</span><span class="card__glyph mono" aria-hidden="true">❄</span></div>
+            <h3>Maitri Station Energy Manager</h3>
+            <p>AI energy management for India's Antarctic research station. It covers load, PV and wind forecasting, Monte Carlo fuel budgeting and MILP dispatch under clean-air constraints.</p>
+            <ul class="stack-tags"><li>PuLP + HiGHS</li><li>LightGBM</li><li>pvlib</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/SIH26061" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="rtl python">
+            <div class="card__head"><span class="card__kind mono">Where it started</span><span class="card__glyph mono" aria-hidden="true">@</span></div>
+            <h3>Nand2Tetris Assembler</h3>
+            <p>Converts Nand2Tetris assembly into <code>.hack</code> machine code. It came from the course that took me from logic gates all the way up to Tetris.</p>
+            <ul class="stack-tags"><li>C++</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/assembler_for_cpu" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+
+          <article class="card" data-tags="rtl">
+            <div class="card__head"><span class="card__kind mono">In progress</span><span class="card__glyph mono" aria-hidden="true">…</span></div>
+            <h3>Custom Processor</h3>
+            <p>My latest work on the processor side, actively in development.</p>
+            <ul class="stack-tags"><li>Verilog</li></ul>
+            <a class="link" href="https://github.com/Aditya-eng/Project_BD_custom_processor" target="_blank" rel="noopener">View project ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CV ============ -->
+    <section class="section section--alt" id="cv">
+      <div class="container">
+        <p class="eyebrow mono">04 / cv</p>
+        <h2>Experience &amp; education</h2>
+        <div class="cv">
+          <ol class="timeline">
+            <li>
+              <span class="timeline__when mono">Sept 2024 – Sept 2025</span>
+              <h3>Student Member · Texas Instruments Innovation Lab, NSUT</h3>
+              <p>Brought up 7 custom microcontroller and sensor boards from schematic to working hardware, covering KiCad layout, SMT/THT assembly and functional verification. Debugged SPI, I²C and UART links end to end with oscilloscope and bus captures. I learned to tell firmware faults from electrical ones and traced root causes to biasing, loading and noise.</p>
+            </li>
+            <li>
+              <span class="timeline__when mono">July 2025</span>
+              <h3>Instructor · IoT Workshop, Dept. of ICE, NSUT</h3>
+              <p>Taught microcontroller architecture, peripheral interfacing and embedded C to 35+ students. I then debugged 9 student builds until each was a working demo.</p>
+            </li>
+            <li>
+              <span class="timeline__when mono">2023 – 2024</span>
+              <h3>CEDT Lab, NSUT</h3>
+              <p>Hands-on electronics with Arduino, ESP32 and Raspberry Pi. This is also where I became comfortable working in Linux.</p>
+            </li>
+            <li>
+              <span class="timeline__when mono">2023 – May 2027</span>
+              <h3>B.Tech, Instrumentation &amp; Control Engineering</h3>
+              <p>Netaji Subhas University of Technology (NSUT), New Delhi.</p>
+            </li>
+            <li>
+              <span class="timeline__when mono">2021 – 2023</span>
+              <h3>New Era Public School</h3>
+              <p>Class XII: 92% (2023) · Class X: 92% (2021)</p>
+            </li>
+          </ol>
+
+          <aside class="awards">
+            <h3>Achievements</h3>
+            <ul>
+              <li><span class="awards__badge">📄</span><div><strong>Publication</strong><span>B.Tech project accepted at RCAAI (5th edition)</span></div></li>
+              <li><span class="awards__badge">🥉</span><div><strong>3rd Place</strong><span>HackWithMAIT 5.0, smart door automation</span></div></li>
+              <li><span class="awards__badge">🏁</span><div><strong>Semi-Finalist</strong><span>AtomQuest 2025, 18,000+ registrations</span></div></li>
+              <li><span class="awards__badge">🇮🇳</span><div><strong>College Finalist</strong><span>Smart India Hackathon 2024</span></div></li>
+              <li><span class="awards__badge">🥈</span><div><strong>Runner-up</strong><span>Eco-Fest, ultrasonic distance measurement</span></div></li>
+              <li><span class="awards__badge">⚡</span><div><strong>Participant</strong><span>SIH 2026 · Jammu Smart City Hackathon 2026</span></div></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner">
+        <p class="eyebrow mono">05 / contact</p>
+        <h2>Wanna see more of my work, or build something together?</h2>
+        <p class="lede">I'm open to FPGA / RTL roles, research internships and collaborations on hardware accelerators.</p>
+        <div class="contact__links">
+          <a class="btn btn--primary" href="mailto:gargadi2405@gmail.com">gargadi2405@gmail.com</a>
+          <a class="btn btn--ghost" href="https://github.com/Aditya-eng" target="_blank" rel="noopener">github.com/Aditya-eng ↗</a>
+        </div>
+        <p class="mono small">New Delhi, India</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> Aditya Garg</span>
+      <span class="mono">built by hand · no frameworks · works on any screen</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

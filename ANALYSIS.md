@@ -43,7 +43,7 @@ This is an analysis of [namaicv.com](https://www.namaicv.com/) (Namai Chandra, R
 | Wix runtime, ~485 KB of HTML plus heavy JS | Hand-written static HTML, CSS and JS with no frameworks, deployable on GitHub Pages |
 | "Best experienced on pc" | Mobile-first responsive layout with a hamburger nav at ≤760px and no horizontal scroll |
 | Category tags that aren't working filters | **Working filter chips** (All / RTL & FPGA / Embedded & Analog / Python & Hackathons) |
-| Research page renders empty | Research section built around the **RCAAI paper** with headline numbers, plus open research questions |
+| Research page renders empty | Research section built around the **B.Tech MRPM project** with headline numbers, plus open research questions |
 | "Recent Projects" heading repeated 8× in the DOM | Semantic, de-duplicated markup (`section`, `article`, `nav`, skip link, ARIA states) |
 | Logos without numbers | **Quantified results** throughout (−35.7% LUT4, +55% Fmax, 65,536 pairs, 360,000 transfers) |
 | Content spread over 6 pages | Single page with anchored sections; the nav highlights the current section |
@@ -55,8 +55,9 @@ This is an analysis of [namaicv.com](https://www.namaicv.com/) (Namai Chandra, R
 |---|---|
 | "Howdy! I'm Namai" | "Hey! I'm Aditya." |
 | Roles line | RTL Designer · FPGA Tinkerer · Board Bring-up · Hackathon Regular |
-| Headshot | An animated **testbench terminal** showing his real results, since verification is his signature |
-| "Featured by" (NASA) | **Recognised by:** RCAAI paper, SIH 2024 finalist, AtomQuest semi-finalist, HackWithMAIT 3rd |
+| Headshot | A circular avatar beside his full name in the hero, plus a glass-framed portrait in About |
+| "Featured by" (NASA) | **Recognition row:** Eco-Fest runner-up, SIH 2024 finalist, AtomQuest semi-finalist, HackWithMAIT 3rd, 7 boards brought up |
+| CV page | Résumé PDF (`assets/Aditya_Garg_Resume.pdf`) with View and Download buttons in the CV section |
 | "Imagine it build it" | "I don't trust a board until I've measured it working." |
 | Softwares logo grid | Grouped **Toolbox**: HDL, simulation and FPGA, boards and analog, lab bench, platforms, Python |
 | Visual identity | A **"thinking rocks"** theme: copper PCB traces with signal pulses, a chip logo, and a layer stack from software down to the physics of the board |
@@ -83,8 +84,8 @@ The second reference was a screenshot of a travel site called "Tidewell", taken 
 
 ## 7. Deliberately left out
 
-- **Phone number.** It's in the profile, but it doesn't belong on a public site.
-- **CGPA.** Not shown; it can be added to the CV section if wanted.
+- **Phone number and CGPA** are not in the page text. Both do appear in the linked résumé PDF, which he chose to publish.
+- **RCAAI.** The paper was accepted, but he didn't proceed with it, so the site doesn't claim a publication.
 - **Letter of recommendation quotes.** LORs are usually confidential.
 - **Named target labs and programmes** (EPFL E3, USTC). These are application details, not portfolio content.
 - **The `SIH_internal_code_ados` repo link.** That repo has committed AWS IoT private keys. The project is described, but the repo isn't linked until the keys are revoked and purged from history.

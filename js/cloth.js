@@ -340,6 +340,13 @@
   tex.src = 'assets/resume-thumb.jpg';
 
   var lastW = btn.clientWidth, rt;
+  // the CV page is hidden until visited, so re-fit the sheet when it becomes visible
+  window.addEventListener('ados:page', function (e) {
+    if (e.detail !== 'cv' || !btn.clientWidth || btn.clientWidth === lastW) return;
+    lastW = btn.clientWidth;
+    build();
+    draw();
+  });
   window.addEventListener('resize', function () {
     clearTimeout(rt);
     rt = setTimeout(function () {

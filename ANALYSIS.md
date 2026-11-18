@@ -107,7 +107,15 @@ Both references let you drag things around: Himanshu's whole site is a draggable
 - **Costs:** keyboard and screen-reader access need a non-drag fallback. Phones have no room for windows, so it would collapse to stacked cards there. Recruiters skimming for 30 seconds may not discover it. Overlapping windows can also hide content.
 - **Recommendation:** add it as one **contained section** (a playground) under a normal scrolling page, not as the whole site, so the fast recruiter path stays intact.
 
-## 8. Deliberately left out
+## 8. Round 4 changes
+
+- **Separate pages.** The site is no longer one long scroll. Each nav item shows its own page (hash-routed, with the back button, deep links, per-page titles and a previous/next pager in the footer). Without JavaScript it falls back to the full scrolling page.
+- **Clickable project cards.** The whole card opens the repo. Four projects have no public repo (RISC-V core, FemtoRV SoC, ultrasonic ranging, RPi intrusion detector), so they say "No public repo yet" and aren't clickable.
+- **Research cut-off fixed.** The research card and the cloth résumé both used the class `.paper`, so the research card inherited the cloth's fixed height (~335px) with `overflow: hidden`. The research card is now `.study`.
+- **Photo rings removed.** Both photos are plain circles, and the coral outline on the small nav avatar is gone.
+- **Contact puns.** "Let's ___ that sh*t." with a rotating verb (build, debug, synthesise, ship, route, measure, tape out), plus pun cards for email, GitHub, résumé and time zone.
+
+## 9. Deliberately left out
 
 - **Phone number and CGPA** are not in the page text. Both do appear in the linked résumé PDF, which he chose to publish.
 - **RCAAI.** The paper was accepted, but he didn't proceed with it, so the site doesn't claim a publication.

@@ -8,7 +8,7 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var root = document.documentElement;
-  var HOVER = 'a, button, .chip, .card, .q, .stack__list li, .glass-ring, .features__list li, [data-cursor]';
+  var HOVER = 'a, button, .chip, .card, .q, .stack__list li, .avatar, .pun, .pager__link, .features__list li, [data-cursor]';
 
   function el(cls) { var d = document.createElement('div'); d.className = cls; d.setAttribute('aria-hidden', 'true'); document.body.appendChild(d); return d; }
 

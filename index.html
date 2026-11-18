@@ -19,6 +19,12 @@
       var t = localStorage.getItem('ados-theme');
       if (t) document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
+    (function (d) {
+      var pages = ['home', 'about', 'research', 'projects', 'cv', 'contact'];
+      var h = location.hash.slice(1);
+      d.classList.add('is-routed');
+      d.setAttribute('data-route', pages.indexOf(h) > -1 ? h : 'home');
+    })(document.documentElement);
   </script>
 </head>
 <body>
@@ -27,12 +33,13 @@
 
   <!-- ============ NAV ============ -->
   <header class="nav" id="top">
-    <a class="brand glass" href="#top" aria-label="Aditya Garg, home">
+    <a class="brand glass" href="#home" aria-label="Aditya Garg, home">
       <img class="brand__avatar" src="assets/profile-sm.jpg" alt="" width="28" height="28" />
       <span>Aditya Garg</span>
     </a>
     <nav aria-label="Primary">
       <ul class="nav__links glass" id="nav-links">
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#projects">Pro-Folio</a></li>
@@ -52,8 +59,9 @@
   </header>
 
   <main id="main">
-    <!-- ============ HERO ============ -->
-    <section class="hero">
+    <!-- ============ HOME ============ -->
+    <section class="page page--home" id="home" data-page="Home">
+    <div class="hero">
       <div class="hero__panel">
         <div class="hero__aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
         <div class="hero__reeds" aria-hidden="true"></div>
@@ -87,9 +95,7 @@
 
           <div class="hero__copy">
             <div class="hero__id">
-              <div class="glass-ring glass-ring--hero">
-                <img src="assets/avatar.jpg" alt="Portrait of Aditya Garg" width="480" height="480" />
-              </div>
+              <img class="avatar avatar--hero" src="assets/avatar.jpg" alt="Portrait of Aditya Garg" width="480" height="480" />
               <div>
                 <p class="hero__name">Hey! I'm <strong>Aditya Garg</strong></p>
                 <p class="hero__hi mono">Final-year B.Tech · ICE · NSUT, New Delhi</p>
@@ -137,18 +143,18 @@
           </ul>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ============ STATS ============ -->
-    <section class="stats container" aria-label="Highlights in numbers">
+    <div class="stats container" aria-label="Highlights in numbers">
       <div class="stat glass"><span class="stat__num" data-count="65536">65,536</span><span class="stat__lbl">operand pairs checked exhaustively</span></div>
       <div class="stat glass"><span class="stat__num" data-count="360000">360,000</span><span class="stat__lbl">randomised FIFO transfers, zero loss</span></div>
       <div class="stat glass"><span class="stat__num" data-count="7">7</span><span class="stat__lbl">custom boards brought up from schematic</span></div>
       <div class="stat glass"><span class="stat__num" data-count="35" data-suffix="+">35+</span><span class="stat__lbl">students taught embedded C</span></div>
+    </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
+    <section class="section page" id="about" data-page="About">
       <div class="container about">
         <div class="about__text">
           <p class="eyebrow mono"><span class="dot"></span>About</p>
@@ -179,9 +185,7 @@
 
         <div class="about__side">
         <figure class="portrait glass">
-          <div class="glass-ring glass-ring--about">
-            <img src="assets/avatar.jpg" alt="Aditya Garg, smiling, in a navy polo under the trees" width="480" height="480" loading="lazy" />
-          </div>
+          <img class="avatar avatar--about" src="assets/avatar.jpg" alt="Aditya Garg, smiling, in a navy polo under the trees" width="480" height="480" loading="lazy" />
           <figcaption class="portrait__cap">
             <strong>Aditya Garg</strong>
             <span class="mono">New Delhi · FPGA / RTL</span>
@@ -219,16 +223,16 @@
     </section>
 
     <!-- ============ RESEARCH ============ -->
-    <section class="section" id="research">
+    <section class="section page" id="research" data-page="Research">
       <div class="container">
         <p class="eyebrow mono"><span class="dot"></span>Research</p>
         <h2>Research</h2>
 
-        <article class="paper">
-          <div class="hero__aurora paper__aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i></div>
+        <article class="study">
+          <div class="hero__aurora study__aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i></div>
           <div class="hero__reeds" aria-hidden="true"></div>
-          <div class="paper__inner">
-            <div class="paper__meta">
+          <div class="study__inner">
+            <div class="study__meta">
               <span class="badge badge--sm">B.Tech Project</span>
               <span class="mono">Supervisor: Dr. Jyoti Yadav · NSUT · Team of four, design lead</span>
             </div>
@@ -239,7 +243,7 @@
               replaces 8 sequential shift-add iterations with 4 parallel partial products. Using coefficient symmetry, we then
               folded an 8-tap linear-phase FIR onto 4 multipliers. I implemented it on a Xilinx Virtex-7 VC709 for signal denoising.
             </p>
-            <ul class="paper__results">
+            <ul class="study__results">
               <li class="glass"><span class="big">−35.7%</span><span>LUT4 (345 → 222), bit-identical output</span></li>
               <li class="glass"><span class="big">+55%</span><span>Fmax with 4-stage pipeline (42.96 → 66.47 MHz)</span></li>
               <li class="glass"><span class="big">0</span><span>mismatches across all 65,536 signed operand pairs</span></li>
@@ -265,7 +269,7 @@
     </section>
 
     <!-- ============ PROJECTS ============ -->
-    <section class="section" id="projects">
+    <section class="section page" id="projects" data-page="Pro-Folio">
       <div class="container">
         <p class="eyebrow mono"><span class="dot"></span>Pro-Folio</p>
         <h2>Recent projects</h2>
@@ -299,6 +303,7 @@
             <h3>32-bit Single-Cycle RISC-V Core</h3>
             <p>RV32I ALU, control unit, register file and datapath. Over 40 base instructions verified with my own testbenches, with control decode and timing checked in GTKWave.</p>
             <ul class="stack-tags"><li>Verilog</li><li>RV32I</li></ul>
+            <span class="card__private mono">No public repo yet</span>
           </article>
 
           <article class="card glass" data-tags="rtl embedded">
@@ -306,6 +311,7 @@
             <h3>FemtoRV SoC Peripherals &amp; Drivers</h3>
             <p>Integrated UART and timer peripherals through fixed memory-mapped registers, then wrote bare-metal C drivers, first polled and then interrupt-driven.</p>
             <ul class="stack-tags"><li>Verilog</li><li>C</li><li>FemtoRV Quark</li></ul>
+            <span class="card__private mono">No public repo yet</span>
           </article>
 
           <article class="card glass" data-tags="embedded">
@@ -321,6 +327,7 @@
             <h3>Ultrasonic Distance Measurement</h3>
             <p>Time-of-flight ranging covering transmit drive, echo capture and distance conversion.</p>
             <ul class="stack-tags"><li>Ultrasonic</li><li>Embedded C</li></ul>
+            <span class="card__private mono">No public repo yet</span>
           </article>
 
           <article class="card glass" data-tags="embedded python">
@@ -328,6 +335,7 @@
             <h3>Raspberry Pi Intrusion Detector</h3>
             <p>A background thread polls a GPIO sensor input on my Raspberry Pi. When it triggers, the Pi publishes an alert to AWS IoT Core over MQTT with TLS.</p>
             <ul class="stack-tags"><li>Python</li><li>RPi.GPIO</li><li>MQTT</li><li>AWS IoT</li></ul>
+            <span class="card__private mono">No public repo yet</span>
           </article>
 
           <article class="card glass" data-tags="python">
@@ -374,7 +382,7 @@
     </section>
 
     <!-- ============ CV ============ -->
-    <section class="section" id="cv">
+    <section class="section page" id="cv" data-page="CV">
       <div class="container">
         <p class="eyebrow mono"><span class="dot"></span>CV</p>
         <h2>Experience &amp; education</h2>
@@ -450,27 +458,63 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section contact" id="contact">
+    <section class="section page contact" id="contact" data-page="Contact">
       <div class="container">
         <div class="contact__panel">
           <div class="hero__aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
           <div class="hero__reeds" aria-hidden="true"></div>
           <div class="contact__inner">
             <p class="eyebrow mono"><span class="dot"></span>Contact</p>
-            <h2>Wanna see more of my work, or build something together?</h2>
-            <p class="contact__lede">I'm open to FPGA / RTL roles, research internships and collaborations on hardware accelerators.</p>
+            <h2 class="contact__title" aria-label="Let's build that sh*t.">
+              <span aria-hidden="true">Let's <span class="swap"><span class="swap__word">build</span></span><br />that sh<span class="star">*</span>t.</span>
+            </h2>
+            <p class="contact__lede">
+              FPGA / RTL roles, research internships, hardware-accelerator collabs, or a board that refuses to boot.
+              Bring the idea. I'll bring the oscilloscope.
+            </p>
             <div class="contact__links">
               <a class="btn btn--coral" href="mailto:gargadi2405@gmail.com">gargadi2405@gmail.com <span aria-hidden="true">↗</span></a>
               <a class="btn btn--glass" href="https://github.com/Aditya-eng" target="_blank" rel="noopener">github.com/Aditya-eng</a>
             </div>
-            <p class="mono contact__loc">New Delhi, India</p>
+            <p class="mono contact__loc">New Delhi, India · IST (UTC+5:30)</p>
           </div>
         </div>
+
+        <div class="puns">
+          <a class="pun glass" href="mailto:gargadi2405@gmail.com">
+            <span class="pun__k mono">Email</span>
+            <strong class="pun__line">Send me a signal. I'll ACK.</strong>
+            <span class="pun__sub">Usually within a clock cycle. A slow clock, but still.</span>
+            <span class="pun__go" aria-hidden="true">↗</span>
+          </a>
+          <a class="pun glass" href="https://github.com/Aditya-eng" target="_blank" rel="noopener">
+            <span class="pun__k mono">GitHub</span>
+            <strong class="pun__line">Fork around and find out.</strong>
+            <span class="pun__sub">Verilog, testbenches and the odd hackathon repo.</span>
+            <span class="pun__go" aria-hidden="true">↗</span>
+          </a>
+          <a class="pun glass" href="assets/Aditya_Garg_Resume.pdf" target="_blank" rel="noopener" data-open-resume>
+            <span class="pun__k mono">Résumé</span>
+            <strong class="pun__line">One page. Zero timing violations.</strong>
+            <span class="pun__sub">Met setup, met hold, met the one-page limit.</span>
+            <span class="pun__go" aria-hidden="true">↗</span>
+          </a>
+          <div class="pun glass" tabindex="0">
+            <span class="pun__k mono">Time zone</span>
+            <strong class="pun__line">Different clock domain? I've got two flops.</strong>
+            <span class="pun__sub">IST, UTC+5:30. I sync up fine, no metastability.</span>
+          </div>
+        </div>
+        <p class="contact__fine mono">No latches were inferred in the making of this page.</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
+    <nav class="container pager" aria-label="Page navigation" hidden>
+      <a class="pager__link pager__prev glass" href="#home"><span class="mono">Previous</span><strong></strong></a>
+      <a class="pager__link pager__next glass" href="#about"><span class="mono">Next</span><strong></strong></a>
+    </nav>
     <div class="container footer__inner">
       <span>© <span id="year">2026</span> Aditya Garg</span>
       <span class="mono">Hand-built · no frameworks</span>

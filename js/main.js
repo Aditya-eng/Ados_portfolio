@@ -33,21 +33,74 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
   }
 
-  /* ---------- Active section in nav ---------- */
+  /* ---------- Pages: one section per "page", hash-routed (#about, #cv …) ---------- */
+  var pages = Array.prototype.slice.call(document.querySelectorAll('[data-page]'));
+  var pageIds = pages.map(function (p) { return p.id; });
   var navLinks = document.querySelectorAll('.nav__links a[href^="#"]');
-  if ('IntersectionObserver' in window) {
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        each(navLinks, function (a) {
-          a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id);
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    each(navLinks, function (a) {
-      var sec = document.querySelector(a.getAttribute('href'));
-      if (sec) spy.observe(sec);
+  var pager = document.querySelector('.pager');
+  var baseTitle = document.title;
+  var current = null;
+
+  function setPager(i) {
+    if (!pager) return;
+    pager.hidden = false;
+    [['.pager__prev', i - 1], ['.pager__next', i + 1]].forEach(function (pair) {
+      var a = pager.querySelector(pair[0]), p = pages[pair[1]];
+      a.classList.toggle('is-gone', !p);
+      a.tabIndex = p ? 0 : -1;
+      if (p) { a.setAttribute('href', '#' + p.id); a.querySelector('strong').textContent = p.getAttribute('data-page'); }
     });
+  }
+  function go(id, opts) {
+    opts = opts || {};
+    if (pageIds.indexOf(id) === -1) id = 'home';
+    if (id === current && !opts.force) return;
+    var page = document.getElementById(id);
+    var first = current === null;
+    current = id;
+    root.setAttribute('data-route', id);
+    each(navLinks, function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    document.title = id === 'home' ? baseTitle : page.getAttribute('data-page') + ' · Aditya Garg';
+    setPager(pageIds.indexOf(id));
+    closeMenu();
+    if (!first) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      if (!reduceMotion) {
+        page.classList.remove('page-enter'); void page.offsetWidth; page.classList.add('page-enter');
+      }
+      page.setAttribute('tabindex', '-1');
+      page.focus({ preventScroll: true });
+    }
+    window.dispatchEvent(new CustomEvent('ados:page', { detail: id }));
+  }
+  function fromHash() { return location.hash.slice(1); }
+  window.addEventListener('hashchange', function () {
+    var h = fromHash();
+    if (pageIds.indexOf(h) > -1 || h === '') go(h);   // #main, #top etc. are not pages: stay put
+  });
+  each(document.querySelectorAll('a[href="#top"]'), function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduceMotion ? 'instant' : 'smooth' }); });
+  });
+  go(fromHash());
+
+  /* ---------- Contact: "Let's ___ that sh*t." ---------- */
+  var swap = document.querySelector('.swap__word');
+  if (swap && !reduceMotion) {
+    var verbs = ['build', 'debug', 'synthesise', 'ship', 'route', 'measure', 'tape out'];
+    var vi = 0;
+    setInterval(function () {
+      if (current !== 'contact' || document.hidden) return;
+      swap.classList.remove('is-in'); swap.classList.add('is-out');
+      setTimeout(function () {
+        vi = (vi + 1) % verbs.length;
+        swap.textContent = verbs[vi];
+        swap.classList.remove('is-out'); void swap.offsetWidth; swap.classList.add('is-in');
+      }, 340);
+    }, 2200);
   }
 
   /* ---------- Project filters ---------- */
@@ -108,7 +161,7 @@
   }
 
   /* ---------- Reveal on scroll ---------- */
-  var revealEls = document.querySelectorAll('.section h2, .paper, .q, .card, .tools__group, .timeline li, .awards, .stack, .stat, .contact__panel');
+  var revealEls = document.querySelectorAll('.section h2, .study, .q, .card, .tools__group, .timeline li, .awards, .stack, .stat, .contact__panel, .pun');
   if ('IntersectionObserver' in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {

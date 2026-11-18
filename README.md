@@ -9,7 +9,7 @@ It is a static site written in plain HTML, CSS and JavaScript, with no build ste
 ```
 index.html        single-page site (Hero, About, Research, Pro-Folio, CV, Contact)
 css/style.css     theme tokens (dark + light), layout, components
-js/main.js        theme toggle, mobile nav, project filters, typed terminal, PCB-trace canvas
+js/main.js        theme toggle, mobile nav, scroll-spy, project filters, feature-row cycler, aurora parallax
 assets/           favicon
 ANALYSIS.md       analysis of the reference site (namaicv.com) and design decisions
 ```
@@ -32,4 +32,6 @@ The site will be served at `https://aditya-eng.github.io/Ados_portfolio/`.
 
 All content lives in `index.html`:
 - **Projects** are `<article class="card" data-tags="rtl embedded python">` blocks. The `data-tags` values drive the filter chips.
-- **Theme colours** are CSS variables at the top of `css/style.css` (`--accent` is copper, `--signal` is the green used for PASS).
+- **Theme colours** are CSS variables at the top of `css/style.css`: `--navy` `#14213D`, `--cream` `#F4EDE0` and `--coral` `#FF6B5B`. Dark and light tokens follow them.
+- **Fonts** are Unbounded (display), Manrope (body) and Martian Mono (labels), all from Google Fonts.
+- **Glass:** add the `glass` class to any element for the frosted liquid-glass surface.

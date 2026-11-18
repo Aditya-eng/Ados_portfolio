@@ -61,7 +61,27 @@ This is an analysis of [namaicv.com](https://www.namaicv.com/) (Namai Chandra, R
 | Softwares logo grid | Grouped **Toolbox**: HDL, simulation and FPGA, boards and analog, lab bench, platforms, Python |
 | Visual identity | A **"thinking rocks"** theme: copper PCB traces with signal pulses, a chip logo, and a layer stack from software down to the physics of the board |
 
-## 6. Deliberately left out
+## 6. Visual redesign: "Tidewell" reference (v2)
+
+The second reference was a screenshot of a travel site called "Tidewell", taken from a social video, so the like, share and save counts are overlays. These are its elements and how they were adapted:
+
+| Tidewell element | Adapted as |
+|---|---|
+| Navy background, coral aurora glow, **reeded (fluted) glass** striations | `.hero__aurora` (three blurred radial blobs; the coral one follows the pointer) under `.hero__reeds` (a repeating vertical gradient with a light backdrop blur). Reused on the Research paper and Contact panels |
+| Centred **glass pill nav**, coral dot on the active link | `.nav__links.glass`; the active section gets a coral dot through scroll-spy |
+| Round cream icon button at top right | Theme toggle (`.round--cream`) |
+| Floating **frosted booking card** with a drag handle, sub-cards, big numbers with a chip between ("Fri 14 · 2 nights · Sun 16") and a coral pill badge | `.hero-card`: "LUT4 345 · −35.7% · 222", "Fmax 42.96 · 4 stages · 66.47", and the badge "65,536 / 65,536 pairs · 0 mismatches" |
+| Huge light-weight cream headline, bottom-left | "I arrange rocks until they think." in Unbounded 400 |
+| Coral pill CTA with ↗ next to a plain text link | `.btn--coral` and `.btn--text` |
+| Five-column feature row with line icons and a **coral progress segment** | `.features`: recognition items; the segment cycles every 3.2 s and pauses on hover |
+
+**Palette:** navy `#14213D`, cream `#F4EDE0`, coral `#FF6B5B`. Text on coral buttons is navy, which gives about 5.7:1 contrast. In light mode, coral text darkens to `#B53A29` so it passes AA on cream.
+
+**Type:** The fonts asked for (SK Nomerok, Nerro, Xenon Nue) are commercial or have unclear licences, so the site uses free Google Fonts with the same wide, geometric feel: **Unbounded** for display, **Manrope** for body and **Martian Mono** for labels.
+
+**Liquid glass:** `.glass` combines `backdrop-filter: blur(22px) saturate(170%)`, a translucent cream fill, an inner top highlight and a diagonal specular sheen (`::after`). A fixed page-wide aurora sits behind the content so the glass always has colour to refract. Browsers without `backdrop-filter` fall back to an opaque fill.
+
+## 7. Deliberately left out
 
 - **Phone number.** It's in the profile, but it doesn't belong on a public site.
 - **CGPA.** Not shown; it can be added to the CV section if wanted.

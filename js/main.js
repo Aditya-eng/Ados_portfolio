@@ -6,16 +6,6 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
 
-  /* ---------- Theme toggle ---------- */
-  var themeBtn = document.querySelector('.theme-toggle');
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('ados-theme', next); } catch (e) {}
-    });
-  }
-
   /* ---------- Mobile nav ---------- */
   var toggle = document.querySelector('.nav__toggle');
   var links = document.getElementById('nav-links');

@@ -8,8 +8,8 @@ It is a static site written in plain HTML, CSS and JavaScript, with no build ste
 
 ```
 index.html        the site: six pages (Home, About, Research, Pro-Folio, CV, Contact) shown one at a time
-css/style.css     theme tokens (dark + light), layout, components
-js/main.js        page router (#about, #cv …), theme toggle, mobile nav, project filters, feature-row cycler, aurora parallax, résumé viewer
+css/style.css     theme tokens (dark), layout, components
+js/main.js        page router (#about, #cv …), mobile nav, project filters, feature-row cycler, aurora parallax, résumé viewer
 js/cloth.js       pinned résumé sheet: Verlet cloth that unrolls, bends when dragged, opens the viewer on click
 js/cursor.js      liquid-glass droplet cursor with ripples (desktop only, off for reduced motion)
 assets/           favicon, avatar/profile photos, résumé PDF + pre-rendered page images
@@ -38,6 +38,6 @@ Each page is a `<section data-page="Name" id="…">` in `index.html`. Only the p
 
 All content lives in `index.html`:
 - **Projects** are `<article class="card" data-tags="rtl embedded python">` blocks. The `data-tags` values drive the filter chips. A card's `.link` stretches over the whole card, so clicking anywhere on it opens the project.
-- **Theme colours** are CSS variables at the top of `css/style.css`: `--navy` `#14213D`, `--cream` `#F4EDE0` and `--coral` `#FF6B5B`. Dark and light tokens follow them.
+- **Theme colours** are CSS variables at the top of `css/style.css`: `--navy` `#14213D`, `--cream` `#F4EDE0` and `--coral` `#FF6B5B`.
 - **Fonts** are Unbounded (display), Manrope (body) and Martian Mono (labels), all from Google Fonts.
 - **Glass:** add the `glass` class to any element for the frosted liquid-glass surface.

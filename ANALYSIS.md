@@ -47,7 +47,7 @@ This is an analysis of [namaicv.com](https://www.namaicv.com/) (Namai Chandra, R
 | "Recent Projects" heading repeated 8× in the DOM | Semantic, de-duplicated markup (`section`, `article`, `nav`, skip link, ARIA states) |
 | Logos without numbers | **Quantified results** throughout (−35.7% LUT4, +55% Fmax, 65,536 pairs, 360,000 transfers) |
 | Content spread over 6 pages | Single page with anchored sections; the nav highlights the current section |
-| Light theme only | Dark and light themes that follow the OS setting, plus a manual toggle |
+| Light theme only | A single dark navy theme, built for the liquid-glass look |
 
 ## 5. Translating it to Aditya
 

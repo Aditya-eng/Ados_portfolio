@@ -22,9 +22,8 @@
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
-/* ---------- Dark theme (default) ---------- */
-:root,
-:root[data-theme="dark"] {
+/* ---------- Theme tokens (dark only) ---------- */
+:root {
   --bg: var(--navy);
   --text: var(--cream);
   --muted: rgba(244, 237, 224, .70);
@@ -46,30 +45,7 @@
   color-scheme: dark;
 }
 
-/* ---------- Light theme ---------- */
-:root[data-theme="light"] {
-  --bg: var(--cream);
-  --text: var(--navy);
-  --muted: rgba(20, 33, 61, .74);
-  --faint: rgba(20, 33, 61, .52);
-  --line: rgba(20, 33, 61, .13);
-  --accent-text: #B53A29;
-  --on-coral: var(--navy);
-
-  --glass-bg: rgba(255, 255, 255, .42);
-  --glass-bg-2: rgba(255, 255, 255, .58);
-  --glass-border: rgba(255, 255, 255, .75);
-  --glass-hi: rgba(255, 255, 255, .9);
-  --glass-shadow: 0 18px 50px rgba(20, 33, 61, .10);
-  --sheen: rgba(255, 255, 255, .35);
-
-  --aurora-a: rgba(255, 107, 91, .30);
-  --aurora-b: rgba(20, 33, 61, .16);
-  --aurora-c: rgba(255, 160, 130, .28);
-  color-scheme: light;
-}
-
-/* Navy panels stay navy in both themes, so reset tokens inside them */
+/* Navy panels: slightly stronger glass tokens inside them */
 .hero__panel,
 .study,
 .contact__panel {
@@ -176,7 +152,6 @@ strong { font-weight: 700; }
 
 /* nav glass is always legible over the navy hero and over cream content */
 .nav .glass { background: rgba(20, 33, 61, .42); border-color: rgba(244, 237, 224, .18); color: var(--cream); }
-:root[data-theme="light"] .nav .glass { background: rgba(244, 237, 224, .72); border-color: rgba(255, 255, 255, .8); color: var(--navy); }
 
 .brand {
   display: inline-flex; align-items: center; gap: .55rem;
@@ -199,7 +174,6 @@ strong { font-weight: 700; }
 .nav__links a::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); display: none; }
 .nav__links a:hover { opacity: 1; }
 .nav__links a.is-active { opacity: 1; background: rgba(244, 237, 224, .14); }
-:root[data-theme="light"] .nav__links a.is-active { background: rgba(20, 33, 61, .08); }
 .nav__links a.is-active::before { display: inline-block; }
 
 .nav__right { display: flex; gap: .5rem; }
@@ -209,9 +183,6 @@ strong { font-weight: 700; }
 }
 .round svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .round--cream { background: var(--cream); color: var(--navy); box-shadow: 0 6px 18px rgba(4, 9, 22, .25); border-color: rgba(20, 33, 61, .1); }
-.i-moon { display: none; }
-:root[data-theme="light"] .i-sun { display: none; }
-:root[data-theme="light"] .i-moon { display: block; }
 
 .nav__toggle { display: none; }
 .nav__toggle .bar { display: block; width: 16px; height: 1.8px; background: currentColor; border-radius: 2px; transition: transform .25s var(--ease); }
@@ -586,14 +557,11 @@ html.has-glass-cursor, html.has-glass-cursor * { cursor: none !important; }
   background: var(--cream); box-shadow: 0 0 0 1.5px var(--navy);
   transition: opacity .2s ease;
 }
-:root[data-theme="light"] .cursor-dot { background: var(--navy); box-shadow: 0 0 0 1.5px var(--cream); }
 .cursor-ring {
   width: 46px; height: 46px; margin: -23px 0 0 -23px;
   border: 1.5px solid rgba(244, 237, 224, .75);
   box-shadow: 0 0 14px rgba(244, 237, 224, .22), inset 0 0 10px rgba(244, 237, 224, .2);
 }
-:root[data-theme="light"] .cursor-ring { border-color: rgba(20, 33, 61, .32); box-shadow: 0 0 14px rgba(255, 107, 91, .15), inset 0 0 10px rgba(20, 33, 61, .08); }
-:root[data-theme="light"] .cursor-drop { border-color: rgba(255, 255, 255, .85); box-shadow: inset 2px 3px 6px rgba(255, 255, 255, .7), inset -4px -6px 12px rgba(20, 33, 61, .22), 0 8px 22px rgba(20, 33, 61, .18); }
 html.cursor-visible .cursor-drop, html.cursor-visible .cursor-dot { opacity: 1; }
 .cv { display: grid; gap: 3rem; }
 @media (min-width: 980px) { .cv { grid-template-columns: 1.4fr 1fr; } }

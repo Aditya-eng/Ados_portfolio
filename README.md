@@ -9,8 +9,10 @@ It is a static site written in plain HTML, CSS and JavaScript, with no build ste
 ```
 index.html        single-page site (Hero, About, Research, Pro-Folio, CV, Contact)
 css/style.css     theme tokens (dark + light), layout, components
-js/main.js        theme toggle, mobile nav, scroll-spy, project filters, feature-row cycler, aurora parallax
-assets/           favicon
+js/main.js        theme toggle, mobile nav, scroll-spy, project filters, feature-row cycler, aurora parallax, résumé viewer
+js/cloth.js       pinned résumé sheet: Verlet cloth that unrolls, bends when dragged, opens the viewer on click
+js/cursor.js      liquid-glass droplet cursor with ripples (desktop only, off for reduced motion)
+assets/           favicon, avatar/profile photos, résumé PDF + pre-rendered page images
 ANALYSIS.md       analysis of the reference site (namaicv.com) and design decisions
 ```
 

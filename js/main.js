@@ -141,6 +141,60 @@
     each(document.querySelectorAll('[data-count]'), function (n) { co.observe(n); });
   }
 
+  /* ---------- Résumé viewer (slides up; image page, no PDF plugin needed) ---------- */
+  var viewer = document.getElementById('viewer');
+  var lastTrigger = null;
+  function loadResumePage() {
+    if (!viewer) return;
+    var img = viewer.querySelector('img[data-src]');
+    if (!img) return;
+    var page = img.parentNode;
+    img.addEventListener('load', function () { page.classList.add('is-loaded'); });
+    img.src = img.getAttribute('data-src');
+    img.removeAttribute('data-src');
+    if (img.complete && img.naturalWidth) page.classList.add('is-loaded');
+  }
+  function openResume(trigger) {
+    if (!viewer) return false;
+    lastTrigger = trigger || document.activeElement;
+    loadResumePage();
+    viewer.removeAttribute('inert');
+    viewer.classList.add('is-open');
+    root.classList.add('is-locked');
+    closeMenu();
+    var closeBtn = viewer.querySelector('.viewer__close');
+    setTimeout(function () { if (closeBtn) closeBtn.focus({ preventScroll: true }); }, 80);
+    return true;
+  }
+  function closeResume() {
+    if (!viewer || !viewer.classList.contains('is-open')) return;
+    viewer.classList.remove('is-open');
+    viewer.setAttribute('inert', '');
+    root.classList.remove('is-locked');
+    if (lastTrigger && lastTrigger.focus) lastTrigger.focus({ preventScroll: true });
+  }
+  window.adosOpenResume = openResume;
+
+  each(document.querySelectorAll('[data-open-resume]'), function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;   // let "open in new tab" work
+      e.preventDefault();
+      openResume(a);
+    });
+    // warm the image up on intent so the sheet is ready when the panel arrives
+    a.addEventListener('pointerenter', loadResumePage, { once: true });
+  });
+  var paperBtn = document.getElementById('paper');
+  if (paperBtn) paperBtn.addEventListener('pointerenter', loadResumePage, { once: true });
+
+  if (viewer) {
+    viewer.querySelector('.viewer__close').addEventListener('click', closeResume);
+    viewer.querySelector('.viewer__scroll').addEventListener('click', function (e) {
+      if (e.target === e.currentTarget) closeResume();     // click the backdrop to close
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeResume(); });
+  }
+
   /* ---------- Footer year ---------- */
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

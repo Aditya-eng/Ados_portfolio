@@ -87,7 +87,9 @@
 
           <div class="hero__copy">
             <div class="hero__id">
-              <img class="hero__avatar" src="assets/profile-sm.jpg" alt="Portrait of Aditya Garg" width="64" height="64" />
+              <div class="glass-ring glass-ring--hero">
+                <img src="assets/avatar.jpg" alt="Portrait of Aditya Garg" width="480" height="480" />
+              </div>
               <div>
                 <p class="hero__name">Hey! I'm <strong>Aditya Garg</strong></p>
                 <p class="hero__hi mono">Final-year B.Tech · ICE · NSUT, New Delhi</p>
@@ -101,7 +103,7 @@
               </p>
               <div class="hero__cta">
                 <a class="btn btn--coral" href="#projects">See my work <span aria-hidden="true">↗</span></a>
-                <a class="btn btn--text" href="assets/Aditya_Garg_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+                <a class="btn btn--text" href="assets/Aditya_Garg_Resume.pdf" target="_blank" rel="noopener" data-open-resume>Résumé</a>
                 <a class="btn btn--text" href="https://github.com/Aditya-eng" target="_blank" rel="noopener">GitHub</a>
               </div>
             </div>
@@ -177,10 +179,13 @@
 
         <div class="about__side">
         <figure class="portrait glass">
-          <img src="assets/profile.jpg" alt="Aditya Garg, smiling, in a navy polo under the trees" width="720" height="900" loading="lazy" />
+          <div class="glass-ring glass-ring--about">
+            <img src="assets/avatar.jpg" alt="Aditya Garg, smiling, in a navy polo under the trees" width="480" height="480" loading="lazy" />
+          </div>
           <figcaption class="portrait__cap">
             <strong>Aditya Garg</strong>
             <span class="mono">New Delhi · FPGA / RTL</span>
+            <span class="portrait__tag">Open to FPGA / RTL roles</span>
           </figcaption>
         </figure>
 
@@ -375,16 +380,28 @@
         <h2>Experience &amp; education</h2>
 
         <div class="resume glass">
-          <div class="resume__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>
+          <div class="resume__stage">
+            <button class="paper" id="paper" type="button" aria-label="Open Aditya Garg's résumé">
+              <img class="paper__fallback" src="assets/resume-thumb.jpg" alt="" width="600" height="776" />
+              <canvas class="paper__canvas" aria-hidden="true"></canvas>
+              <span class="paper__pin" aria-hidden="true"></span>
+            </button>
+            <p class="paper__hint mono">drag it · click to open</p>
           </div>
-          <div class="resume__text">
-            <strong>Aditya Garg: Résumé</strong>
-            <span class="mono">PDF · 1 page · 95 KB</span>
-          </div>
-          <div class="resume__actions">
-            <a class="btn btn--glass" href="assets/Aditya_Garg_Resume.pdf" target="_blank" rel="noopener">View <span aria-hidden="true">↗</span></a>
-            <a class="btn btn--coral" href="assets/Aditya_Garg_Resume.pdf" download="Aditya_Garg_Resume.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+          <div class="resume__info">
+            <div class="resume__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>
+            </div>
+            <strong class="resume__title">Aditya Garg: Résumé</strong>
+            <span class="mono resume__meta">PDF · 1 page · 95 KB</span>
+            <p class="resume__blurb">
+              The one-page version: TI Innovation Lab, the IoT workshop, the async FIFO, the MRPM FIR filter, the RISC-V core and
+              the laser tag power path. Pin it, drag it around, then open it.
+            </p>
+            <div class="resume__actions">
+              <a class="btn btn--glass" href="assets/Aditya_Garg_Resume.pdf" target="_blank" rel="noopener" data-open-resume>View <span aria-hidden="true">↗</span></a>
+              <a class="btn btn--coral" href="assets/Aditya_Garg_Resume.pdf" download="Aditya_Garg_Resume.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+            </div>
           </div>
         </div>
 
@@ -461,6 +478,30 @@
     </div>
   </footer>
 
+  <!-- Résumé viewer: slides up over the page -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title" inert>
+    <div class="viewer__bar glass">
+      <div class="viewer__title">
+        <img src="assets/profile-sm.jpg" alt="" width="32" height="32" />
+        <strong id="viewer-title">Aditya Garg: Résumé</strong>
+      </div>
+      <div class="viewer__actions">
+        <a class="btn btn--glass btn--sm" href="assets/Aditya_Garg_Resume.pdf" target="_blank" rel="noopener">Open PDF <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--coral btn--sm" href="assets/Aditya_Garg_Resume.pdf" download="Aditya_Garg_Resume.pdf">Download <span aria-hidden="true">↓</span></a>
+        <button class="round round--cream viewer__close" type="button" aria-label="Close résumé">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="viewer__scroll">
+      <div class="viewer__page">
+        <img alt="Résumé of Aditya Garg, page 1" width="1240" height="1605" data-src="assets/resume-page.jpg" />
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
+  <script src="js/cloth.js" defer></script>
+  <script src="js/cursor.js" defer></script>
 </body>
 </html>
